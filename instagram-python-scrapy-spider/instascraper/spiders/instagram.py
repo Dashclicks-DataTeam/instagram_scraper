@@ -3,19 +3,22 @@ import scrapy
 from urllib.parse import urlencode
 import json
 from datetime import datetime
-API = '13dfb05216650fb2fb29eb8588ffdc60'
+API = '8695a5b6174aae51db83ab8ef592ac7b'
+#API = "9BGJ6NT4OTPWY9B120C8MUMW110M3WFCLHZQTX8Z2HJ9TG92TZ06TMYUXJLTZ75NKO4VI22QW6ZTCHWJ"
+# API = "U38BATV42NPYSPEC7DRT2WP8RQ7DRYVUTC8ZAVMNPVAOKBBSA0ZK6CVEYF681QALYRXGBHUO73LWJD75"
 user_accounts = ["dashclicks"] 
 
 
 def get_url(url):
-    payload = {'api_key': API, 'url': url}
+    payload = {'api_key': API, 'url': url,'render_js':'false'}
     proxy_url = 'http://api.scraperapi.com/?' + urlencode(payload)
+    #proxy_url = "https://app.scrapingbee.com/api/v1/?" + urlencode(payload)
     return proxy_url
 
 
 class InstagramSpider(scrapy.Spider):
     name = 'instagram'
-    allowed_domains = ['api.scraperapi.com']
+    allowed_domains = ['app.scrapingbee.com']
     custom_settings = {'CONCURRENT_REQUESTS_PER_DOMAIN': 5}
 
     def start_requests(self):
